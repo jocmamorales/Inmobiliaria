@@ -61,16 +61,14 @@ CREATE TABLE Localidades (
 CREATE TABLE Domicilios (
    IdDomicilio int IDENTITY(1,1) PRIMARY KEY,
    Direccion  varchar(50),
+   Numero int,
    Piso char,
    Letra char,
    IdLocalidad int foreign key REFERENCES Localidades(IdLocalidad)
 );
 CREATE TABLE Propiedades (
    IdPropiedad int IDENTITY(1,1) PRIMARY KEY,
-   IdDomicilio int foreign key REFERENCES Domicilios(IdDomicilio),
-   Numero int,
-   Piso varchar(10) not null,
-   Letra char not null,  
+   IdDomicilio int foreign key REFERENCES Domicilios(IdDomicilio),  
    IdTipo int foreign key REFERENCES TiposDePropiedades (IdTipo),
    IdCreador int foreign key REFERENCES Empleados(IdLegajo),
    IdPropietario int foreign key REFERENCES Contactos(IdContacto),
