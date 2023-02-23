@@ -66,12 +66,22 @@ CREATE TABLE Domicilios (
    Letra char,
    IdLocalidad int foreign key REFERENCES Localidades(IdLocalidad)
 );
+CREATE TABLE Medidas (
+    IdMedida int IDENTITY(1,1) PRIMARY KEY,
+    Terreno decimal(8,2),
+    Cubierta decimal(8,2),
+    Descubierta decimal(8,2),
+    Semicubierta decimal(8,2),    
+    Frente decimal(8,2),
+    Fondo decimal(8,2)
+);
 CREATE TABLE Propiedades (
    IdPropiedad int IDENTITY(1,1) PRIMARY KEY,
    IdDomicilio int foreign key REFERENCES Domicilios(IdDomicilio),  
    IdTipo int foreign key REFERENCES TiposDePropiedades (IdTipo),
    IdCreador int foreign key REFERENCES Empleados(IdLegajo),
    IdPropietario int foreign key REFERENCES Contactos(IdContacto),
+   IdMedida int foreign key REFERENCES Medidas(IdMedida), 
    FechaCreacion date,
    Ambiente int,
    Dormitorio int,
